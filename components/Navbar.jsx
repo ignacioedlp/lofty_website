@@ -13,7 +13,7 @@ function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className=" ">
       <div className="container px-6 py-3 mx-auto lg:flex lg:justify-between lg:items-center text-heading font-avenir ">
         <div className="flex items-center justify-between">
           <div>

@@ -53,13 +53,13 @@ function Products() {
               recusandae!
             </p>
           </div>
-          <div className="p-4 md:w-1/3 sm:mb-0 mb-6 flex flex-col items-center">
-            <div className="rounded-lg h-64 overflow-hidden ">
+          <div className="p-4 md:w-1/3 sm:mb-0 mb-6 flex flex-col items-center z-1">
+            <div className="rounded-lg h-64 overflow-hidden">
               <Image
                 alt="content"
                 height={200}
                 width={200}
-                className="object-cover object-center rounded-full items-center"
+                className="object-cover  object-center rounded-full items-center"
                 src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1aWxkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
               />
             </div>
