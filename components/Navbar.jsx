@@ -4,6 +4,7 @@ import lofty from "../public/svgs/Icon_lofty_b.svg";
 import "../styles/Home.module.css";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -11,6 +12,7 @@ function Navbar() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
+  const isLogged = useSelector((state) => state.session.isLogged);
 
   return (
     <nav className=" ">
@@ -67,13 +69,36 @@ function Navbar() {
                 EN
               </a>
 
-              <a
-                className="block w-1/2 lg:-my-2  px-3 py-2 lg:mx-1 text-sm font-medium font-avenir leading-5 text-center text-background transition-colors duration-200 transform bg-heading rounded-md hover:bg-heading/75 md:mx-0 md:w-auto"
-                href="#"
-                onClick={() => router.push("/register")}
-              >
-                Join free
-              </a>
+              {!isLogged ? (
+                <div className="flex flex-col lg:flex-row">
+                  <div className="lg:mx-1 mx-0 lg:my-0 my-1">
+                    <a
+                      className="block w-1/2 lg:-my-2  px-3 py-2 lg:mx-1 text-sm font-medium font-avenir leading-5 text-center text-background transition-colors duration-200 transform bg-heading rounded-md hover:bg-heading/75 md:mx-0 md:w-auto"
+                      href="#"
+                      onClick={() => router.push("/register")}
+                    >
+                      Join free
+                    </a>
+                  </div>
+                  <div className="lg:mx-1 mx-0 lg:my-0 my-1">
+                    <a
+                      className="block w-1/2 lg:-my-2  px-3 py-2 lg:mx-1 text-sm font-medium font-avenir leading-5 text-center text-background transition-colors duration-200 transform bg-heading rounded-md hover:bg-heading/75 md:mx-0 md:w-auto"
+                      href="#"
+                      onClick={() => router.push("/login")}
+                    >
+                      Login
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  className="block w-1/2 lg:-my-2  px-3 py-2 lg:mx-1 text-sm font-medium font-avenir leading-5 text-center text-background transition-colors duration-200 transform bg-heading rounded-md hover:bg-heading/75 md:mx-0 md:w-auto"
+                  href="#"
+                  onClick={() => router.push("/profile")}
+                >
+                  Profile
+                </a>
+              )}
             </div>
           </div>
         )}

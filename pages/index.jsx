@@ -1,10 +1,10 @@
 import Head from "next/head";
-
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Informer from "../components/Informer";
 import Products from "../components/Products";
 import Hero from "../components/Hero";
+
 export default function Home() {
   return (
     <div className="">
@@ -15,7 +15,6 @@ export default function Home() {
       </Head>
       <div className="overflow-auto scrollbar-hide divide-y-2 divide-line/75 ">
         <Navbar />
-
         <Hero />
         <Products />
         <Informer />
