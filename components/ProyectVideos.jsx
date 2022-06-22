@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-function ViewVideos() {
+function ProyectVideos() {
   return (
     <div className="py-5 ">
       <div className="flex flex-col lg:flex-row w-full items-center  lg:justify-between my-2 p-1">
@@ -61,4 +61,4 @@ function ViewVideos() {
   );
 }
 
-export default ViewVideos;
+export default ProyectVideos;

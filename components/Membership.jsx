@@ -29,7 +29,7 @@ const images = [
   },
 ];
 
-function SignUpNow() {
+function Membership() {
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
 
@@ -121,4 +121,4 @@ function SignUpNow() {
   );
 }
 
-export default SignUpNow;
+export default Membership;

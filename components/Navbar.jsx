@@ -59,9 +59,11 @@ function Navbar() {
               <a
                 className="my-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-heading/90dark:hover:text-blue-400 lg:mx-4 lg:my-0"
                 href="#"
+                onClick={() => router.push("/pre_membership")}
               >
-                Contact
+                Membership
               </a>
+
               <a
                 className="my-1 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-heading/90dark:hover:text-blue-400 lg:mx-4 lg:my-0"
                 href="#"

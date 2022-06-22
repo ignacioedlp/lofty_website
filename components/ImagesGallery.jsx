@@ -29,7 +29,7 @@ const images = [
 ];
 
 let count = 0;
-function CarouselImages() {
+function ImagesGallery() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleOnNextClick = () => {
@@ -105,4 +105,4 @@ function CarouselImages() {
   );
 }
 
-export default CarouselImages;
+export default ImagesGallery;

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Hero() {
+function TopBannerIndex() {
   return (
     <div
       className="w-full  bg-fit h-[100vh] bg-cover bg-center"
@@ -19,4 +19,4 @@ function Hero() {
   );
 }
 
-export default Hero;
+export default TopBannerIndex;

@@ -32,6 +32,12 @@ function Profile() {
           Profile
         </h1>
         <p className="font-avenir text-heading font-bold my-1">{email}</p>
+
+        <div className=" my-1 px-6 py-2 leading-5 w-42 text-lg text-background transition-colors text-center duration-200 transform bg-icon rounded-md hover:bg-heading/80 focus:outline-none  font-avenir focus:bg-gray-600">
+          <button onClick={() => router.push("/reset_password")}>
+            Change password
+          </button>
+        </div>
         <div className=" my-1 px-6 py-2 leading-5 w-42 text-lg text-background transition-colors text-center duration-200 transform bg-negative rounded-md hover:bg-heading/80 focus:outline-none  font-avenir focus:bg-gray-600">
           <button onClick={handleLogOut}>Cerrar sesion</button>
         </div>
