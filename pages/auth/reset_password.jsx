@@ -1,25 +1,32 @@
-import React, { useState } from "react";
-import { doSendPasswordResetEmail, doSignOut } from "../firebase/firebaseAuth";
-import { useRouter } from "next/router";
-import toast, { Toaster } from "react-hot-toast";
-import Image from "next/image";
-import Head from "next/head";
-import Navbar from "../components/Navbar";
+import React, { useState } from 'react';
+import {
+  doSendPasswordResetEmail,
+  doSignOut,
+} from '../../lib/firebase/firebaseAuth';
+import toast, { Toaster } from 'react-hot-toast';
+
+import Cookies from 'js-cookie';
+import Head from 'next/head';
+import Navbar from '../../components/Navigation/Navbar';
+import { logoutFB } from '../../lib/context/slices/sessionSlice.js';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 
 function Reset_password() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const sendLink = async () => {
     if (email) {
-      toast.success("Successfully");
+      toast.success('Successfully');
       doSendPasswordResetEmail(email);
-      Cookies.remove("session");
+      Cookies.remove('session');
       dispatch(logoutFB());
       await doSignOut(email);
-      router.push("/");
+      router.push('/');
     } else {
-      toast.error("Enter your email");
+      toast.error('Enter your email');
     }
   };
 
@@ -31,8 +38,8 @@ function Reset_password() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <section className="bg-white dark:bg-gray-800 mx-auto">
-        <div className="max-w-3xl px-6 py-16 mx-auto text-center flex flex-col justify-center items-center">
+      <section className="mx-auto bg-white dark:bg-gray-800">
+        <div className="flex flex-col items-center justify-center max-w-3xl px-6 py-16 mx-auto text-center">
           <h1 className="text-3xl font-semibold text-gray-800 dark:text-gray-100">
             Forgot your password?
           </h1>
@@ -53,7 +60,7 @@ function Reset_password() {
             />
 
             <button
-              className="my-1 px-6 py-2 leading-5 w-42 text-lg text-background transition-colors text-center duration-200 transform bg-icon rounded-md hover:bg-heading/80 focus:outline-none  font-avenir focus:bg-gray-600"
+              className="px-6 py-2 my-1 text-lg leading-5 text-center transition-colors duration-200 transform rounded-md w-42 text-background bg-icon hover:bg-heading/80 focus:outline-none font-avenir focus:bg-gray-600"
               onClick={() => sendLink()}
             >
               Send email

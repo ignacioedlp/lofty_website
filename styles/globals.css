@@ -1,13 +1,11 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: "AVENIR";
-  src: url("../public/fonts/AvenirNextLTPro-Regular.ttf");
+  font-family: 'AVENIR';
+  src: url('../public/fonts/AvenirNextLTPro-Regular.ttf');
 }
-
 
 html,
 body {

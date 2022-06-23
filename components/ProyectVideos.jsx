@@ -1,61 +1,125 @@
-import React from "react";
-import Image from "next/image";
+import { motion, useAnimation } from 'framer-motion';
+
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 function ProyectVideos() {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start('visible');
+    } else {
+      control.start('hidden');
+    }
+  }, [control, inView]);
   return (
     <div className="py-5 ">
-      <div className="flex flex-col lg:flex-row w-full items-center  lg:justify-between my-2 p-1">
-        <div className="flex flex-col lg:hidden">
-          <h2 className="font-avenir text-heading text-2xl lg:text-5xl">
+      <div className="flex flex-col items-center w-full p-1 my-2 lg:flex-row lg:justify-between">
+        <motion.div
+          className="flex flex-col px-4 lg:hidden"
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+        >
+          <h2 className="text-2xl font-avenir text-heading lg:text-5xl">
             Project tagline
           </h2>
           <div className="flex lg:w-[600px]">
-            <p className="font-avenir text-body1 font-normal text-sm  ">
+            <p className="text-sm font-normal font-avenir text-body1 ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde
               distinctio, accusamus laborum nesciunt quia rem veniam consectetur
             </p>
           </div>
-        </div>
-        <div className="">
-          <Image
-            src="https://images.unsplash.com/photo-1533759413974-9e15f3b745ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGhvdGVsJ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-            width={500}
-            height={400}
-            alt="image1"
-          />
-        </div>
-        <div className="lg:flex flex-col hidden ">
-          <h2 className="font-avenir text-heading text-2xl lg:text-5xl">
+        </motion.div>
+        <motion.div
+          className="flex items-center justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-96"
+          ></iframe>
+        </motion.div>
+        <motion.div
+          className="flex-col hidden px-4 lg:flex "
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+        >
+          <h2 className="text-2xl font-avenir text-heading lg:text-5xl ">
             Project tagline
           </h2>
           <div className="flex lg:w-[600px]">
-            <p className="font-avenir text-body1 font-normal text-sm  ">
+            <p className="text-sm font-normal font-avenir text-body1 ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde
               distinctio, accusamus laborum nesciunt quia rem veniam consectetur
             </p>
           </div>
-        </div>
+        </motion.div>
       </div>
-      <div className="flex p-1 flex-col lg:flex-row w-full items-center  lg:justify-between my-2">
-        <div className="flex flex-col">
-          <h2 className="font-avenir text-heading  text-2xl lg:text-5xl">
+      <div className="flex flex-col items-center w-full p-1 my-2 lg:flex-row lg:justify-between">
+        <motion.div
+          className="flex flex-col px-4"
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+        >
+          <h2 className="text-2xl font-avenir text-heading lg:text-5xl">
             Building tagline
           </h2>
           <div className="flex lg:w-[600px]">
-            <p className="font-avenir text-body1 font-normal text-sm text-start ">
+            <p className="text-sm font-normal font-avenir text-body1 text-start ">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde
               distinctio, accusamus laborum nesciunt quia rem veniam consectetur
             </p>
           </div>
-        </div>
-        <div className="">
-          <Image
-            src="https://images.unsplash.com/photo-1533759413974-9e15f3b745ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njd8fGhvdGVsJ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-            width={500}
-            height={400}
-            alt="image1"
-          />
-        </div>
+        </motion.div>
+        <motion.div
+          className="flex items-center justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+        >
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-96"
+          ></iframe>
+        </motion.div>
       </div>
     </div>
   );

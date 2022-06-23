@@ -1,18 +1,32 @@
-import React from "react";
+import { motion, useAnimation } from 'framer-motion';
+
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const colours = [
   {
-    title: "Red",
+    title: 'Red',
   },
   {
-    title: "Yellow",
+    title: 'Yellow',
   },
   {
-    title: "White",
+    title: 'White',
   },
 ];
 
 function Colour() {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start('visible');
+    } else {
+      control.start('hidden');
+    }
+  }, [control, inView]);
+
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-8 mx-auto">
@@ -26,7 +40,17 @@ function Colour() {
           deleniti laborum in neque eveniet.
         </p>
 
-        <div className="grid grid-cols-1 gap-8 mt-6 xl:mt-12 xl:gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+          className="grid grid-cols-1 gap-8 mt-6 xl:mt-12 xl:gap-12 md:grid-cols-2 lg:grid-cols-3"
+        >
           {colours.map((color, index) => (
             <div
               key={index}
@@ -48,7 +72,7 @@ function Colour() {
               </p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

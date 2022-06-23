@@ -1,21 +1,34 @@
-import React from "react";
+import { motion, useAnimation } from 'framer-motion';
+
+import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 const plans = [
   {
-    title: "Floor plan 1",
+    title: 'Floor plan 1',
     price: 200,
   },
   {
-    title: "Floor plan 2",
+    title: 'Floor plan 2',
     price: 300,
   },
   {
-    title: "Floor plan 3",
+    title: 'Floor plan 3',
     price: 400,
   },
 ];
 
 function ViewPlans() {
+  const control = useAnimation();
+  const [ref, inView] = useInView();
+
+  useEffect(() => {
+    if (inView) {
+      control.start('visible');
+    } else {
+      control.start('hidden');
+    }
+  }, [control, inView]);
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="container px-6 py-8 mx-auto">
@@ -29,7 +42,17 @@ function ViewPlans() {
           deleniti laborum in neque eveniet.
         </p>
 
-        <div className="grid grid-cols-1 gap-8 mt-6 xl:mt-12 xl:gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          ref={ref}
+          variants={{
+            visible: { opacity: 1, scale: 1 },
+            hidden: { opacity: 0, scale: 0 },
+            transition: { duration: 0.5 },
+          }}
+          initial="hidden"
+          animate={control}
+          className="grid grid-cols-1 gap-8 mt-6 xl:mt-12 xl:gap-12 md:grid-cols-2 lg:grid-cols-3"
+        >
           {plans.map((plan, index) => (
             <div
               key={index}
@@ -55,7 +78,7 @@ function ViewPlans() {
               </p>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

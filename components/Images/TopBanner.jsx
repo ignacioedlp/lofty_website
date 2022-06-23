@@ -1,6 +1,4 @@
-import React from "react";
-
-function TopBannerIndex() {
+function TopBanner() {
   return (
     <div
       className="w-full  bg-fit h-[100vh] bg-cover bg-center"
@@ -10,7 +8,7 @@ function TopBannerIndex() {
     >
       <div className="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-50">
         <div className="text-center">
-          <h1 className="text-5xl font-semibold text-background uppercase ">
+          <h1 className="text-5xl font-semibold uppercase text-background ">
             Lofty services
           </h1>
         </div>
@@ -19,4 +17,4 @@ function TopBannerIndex() {
   );
 }
 
-export default TopBannerIndex;
+export default TopBanner;

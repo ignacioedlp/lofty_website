@@ -1,10 +1,9 @@
-import Image from "next/image";
-import React from "react";
-import lofty from "../public/svgs/Icon_lofty_b.svg";
+import Image from 'next/image';
+import lofty from '../../public/svgs/Icon_lofty_b.svg';
 
 function Footer() {
   return (
-    <footer className="bg-white dark:bg-gray-800 p-4">
+    <footer className="p-4 bg-white dark:bg-gray-800">
       <div className="container px-6 py-4 mx-auto">
         <div className="lg:flex">
           <div className="w-full -mx-6 lg:w-2/5">
@@ -20,7 +19,7 @@ function Footer() {
               <div className="flex mt-4 -mx-2">
                 <a
                   href="#"
-                  className="mx-2 text-body1  dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                  className="mx-2 text-body1 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
                   aria-label="Linkden"
                 >
                   <svg className="w-4 h-4 fill-current " viewBox="0 0 512 512">
@@ -62,66 +61,66 @@ function Footer() {
           <div className="mt-6 lg:mt-0 lg:flex-1">
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 ">
               <div>
-                <h3 className="text-heading font-semibold font-avenir uppercase dark:text-white">
+                <h3 className="font-semibold uppercase text-heading font-avenir dark:text-white">
                   Project
                 </h3>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Frequenly Asked Questions
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Disclaimer
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Community Partners
                 </a>
               </div>
 
               <div>
-                <h3 className="text-heading font-semibold font-avenir uppercase dark:text-white">
+                <h3 className="font-semibold uppercase text-heading font-avenir dark:text-white">
                   Warrantly
                 </h3>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Our Commitment
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Tarion Home Warranty
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Fitness Room
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Parking
                 </a>
               </div>
 
               <div>
-                <h3 className="text-heading font-semibold font-avenir uppercase dark:text-white">
+                <h3 className="font-semibold uppercase text-heading font-avenir dark:text-white">
                   About
                 </h3>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Lofty Properties
                 </a>
@@ -133,13 +132,13 @@ function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Privacy Policy
                 </a>
                 <a
                   href="#"
-                  className="block mt-2 text-sm text-heading  font-avenir dark:text-gray-400 hover:underline"
+                  className="block mt-2 text-sm text-heading font-avenir dark:text-gray-400 hover:underline"
                 >
                   Terms and Conditions
                 </a>
@@ -149,10 +148,10 @@ function Footer() {
         </div>
 
         <div>
-          <p className="text-center text-body1  font-avenir dark:text-white p-4">
+          <p className="p-4 text-center text-body1 font-avenir dark:text-white">
             If you have any questions, please contact us at
-            <span className="text-heading font-semibold font-avenir dark:text-gray-400">
-              {" "}
+            <span className="font-semibold text-heading font-avenir dark:text-gray-400">
+              {' '}
               info@loftyservices.ca
             </span>
           </p>
