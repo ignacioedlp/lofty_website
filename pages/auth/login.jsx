@@ -25,8 +25,6 @@ function Login() {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 

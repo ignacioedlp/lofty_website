@@ -9,7 +9,13 @@ function Footer() {
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
               <div>
-                <Image src={lofty} width={50} height={50} alt="lofty" />
+                <Image
+                  src={lofty}
+                  width={50}
+                  height={50}
+                  alt="lofty"
+                  loading="lazy"
+                />
               </div>
 
               <p className="max-w-md mt-2 text-body1 font-avenir dark:text-gray-400">

@@ -11,8 +11,6 @@ function UnderTheFold({ title, description, data }) {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 
@@ -53,6 +51,7 @@ function UnderTheFold({ title, description, data }) {
                     width={200}
                     className="items-center object-cover object-center rounded-full"
                     src={item.image}
+                    loading="lazy"
                   />
                 </div>
                 <h2 className="mt-1 text-xl font-bold title-font text-heading font-avenir">
