@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-function UnderTheFold({ title, description, data }) {
+function UnderTheFold({ title, description, data, rol }) {
   const control = useAnimation();
   const [ref, inView] = useInView();
 
@@ -34,6 +34,7 @@ function UnderTheFold({ title, description, data }) {
             <h1 className="mb-2 text-4xl font-bold text-center uppercase sm:w-2/5 text-heading font-avenir title-font sm:mb-0">
               {title}
             </h1>
+
             <p className="pl-0 my-8 text-base leading-relaxed text-center sm:w-3/5 text-body1 font-avenir">
               {description}
             </p>
@@ -54,10 +55,13 @@ function UnderTheFold({ title, description, data }) {
                     src={item.image}
                   />
                 </div>
-                <h2 className="mt-5 text-xl font-bold title-font text-heading font-avenir">
+                <h2 className="mt-1 text-xl font-bold title-font text-heading font-avenir">
                   {item.title}
                 </h2>
-                <p className="mt-2 text-base leading-relaxed text-center text-body1 font-avenir">
+                <p className="mt-1 text-md font-bold title-font text-heading font-avenir">
+                  {item.rol}
+                </p>
+                <p className="mt-2 text-base leading-relaxed text-center text-body1 font-avenir ">
                   {item.description}
                 </p>
               </div>

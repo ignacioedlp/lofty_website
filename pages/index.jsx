@@ -39,7 +39,7 @@ export default function Home() {
       </Head>
       <div className="overflow-auto divide-y-2 scrollbar-hide divide-line/75 ">
         <Navbar />
-        <TopBanner />
+        <TopBanner urlVideo={'videoIndexPage.mp4'} />
         <UnderTheFold
           title={'OUR PRODUCTS'}
           description={

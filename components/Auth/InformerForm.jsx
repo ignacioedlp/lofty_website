@@ -1,11 +1,12 @@
 import { motion, useAnimation } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
-
 import { Formik } from 'formik';
+
 import Image from 'next/image';
-import heroPage from '../../public/pngs/hero.png';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+
+import heroPage from '../../public/pngs/hero.png';
 
 function InformerForm() {
   const control = useAnimation();

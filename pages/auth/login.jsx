@@ -6,7 +6,10 @@ import { FirebaseError } from '@firebase/util';
 import { Formik } from 'formik';
 import Head from 'next/head';
 import Navbar from '../../components/Navigation/Navbar';
-import { doSignInWithEmailAndPassword } from '../../lib/firebase/firebaseAuth';
+import {
+  doSignInWithEmailAndPassword,
+  doSignInWithGoogle,
+} from '../../lib/firebase/firebaseAuth';
 import { loginFB } from '../../lib/context/slices/sessionSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -66,11 +69,7 @@ function Login() {
 
   const handleSignIn = async ({ email, password }) => {
     if (email != '' && password != '') {
-      try {
-        await performEmailSignIn(email, password);
-      } catch (err) {
-        console.error(err);
-      }
+      await performEmailSignIn(email, password);
     } else {
       toast.error('Please fill all fields');
     }
@@ -79,8 +78,37 @@ function Login() {
   const handleSubmitWithGoogle = async (e) => {
     e.preventDefault();
 
-    // const res = await doSignInWithGoogle(email, password);
-    console.log('');
+    try {
+      const userCredential = await doSignInWithGoogle();
+
+      Cookie.set('session', userCredential.user.accessToken);
+
+      dispatch(
+        loginFB({
+          token: userCredential.user.accessToken,
+          email: userCredential.user.email,
+        })
+      );
+      toast.success('Successfully');
+      router.push('/');
+    } catch (e) {
+      if (e instanceof FirebaseError) {
+        console.error(e.code);
+        switch (e.code) {
+          case 'auth/too-many-requests':
+            toast.error('Too many requests, try again later');
+            break;
+          case 'auth/user-not-found':
+            toast.error('User not exist, please sign up');
+            break;
+          case 'auth/wrong-password':
+            toast.error('Wrong password, try again later');
+            break;
+          default:
+            toast.error('Unknown error, please try again later');
+        }
+      }
+    }
   };
 
   return (

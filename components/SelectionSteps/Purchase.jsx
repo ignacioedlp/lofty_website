@@ -5,10 +5,12 @@ import { Formik } from 'formik';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useRouter } from 'next/router';
 
 function Purchase() {
   const control = useAnimation();
   const [ref, inView] = useInView();
+  const router = useRouter();
 
   useEffect(() => {
     if (inView) {
@@ -21,6 +23,7 @@ function Purchase() {
   const handleReserveUnit = ({ deposit, price, lotNumber, colour }) => {
     if (deposit && price && colour && lotNumber) {
       toast.success('Success');
+      router.push('/member/purchase');
     } else {
       toast.error('Error');
     }

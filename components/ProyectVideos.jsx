@@ -39,7 +39,7 @@ function ProyectVideos() {
           </div>
         </motion.div>
         <motion.div
-          className="flex items-center justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
+          className="flex items-center h-96 justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
           ref={ref}
           variants={{
             visible: { opacity: 1, scale: 1 },
@@ -49,13 +49,9 @@ function ProyectVideos() {
           initial="hidden"
           animate={control}
         >
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-96"
-          ></iframe>
+          <video autoPlay={true} loop muted id="video" className="w-full h-96">
+            <source src={'../videoIndexPage.mp4'} type="video/mp4" />
+          </video>
         </motion.div>
         <motion.div
           className="flex-col hidden px-4 lg:flex "
@@ -102,7 +98,7 @@ function ProyectVideos() {
           </div>
         </motion.div>
         <motion.div
-          className="flex items-center justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
+          className="flex items-center h-96 justify-center w-full p-4 mt-6 lg:mt-0 lg:w-1/2"
           ref={ref}
           variants={{
             visible: { opacity: 1, scale: 1 },
@@ -112,13 +108,9 @@ function ProyectVideos() {
           initial="hidden"
           animate={control}
         >
-          <iframe
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-96"
-          ></iframe>
+          <video autoPlay={true} loop muted id="video" className="w-full h-96">
+            <source src={'../videoIndexPage.mp4'} type="video/mp4" />
+          </video>
         </motion.div>
       </div>
     </div>

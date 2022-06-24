@@ -4,9 +4,9 @@ import {
 } from '../../lib/firebase/firebaseAuth';
 import { motion, useAnimation } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
-
 import { FirebaseError } from '@firebase/util';
 import { Formik } from 'formik';
+
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useRouter } from 'next/router';

@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-
-import Image from 'next/image';
 import ItemsCarousel from 'react-items-carousel';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const images = [
   {
@@ -44,7 +44,7 @@ const images = [
   },
 ];
 
-function Carousel() {
+function Carousel({ title }) {
   const [imagesData, setImagesData] = useState(0);
   const [activeItemIndex, setActiveItemIndex] = useState(0);
   const chevronWidth = 40;
@@ -58,8 +58,8 @@ function Carousel() {
   return (
     <div className="flex flex-col items-center w-full py-8 lg:justify-between lg:mx-0">
       <div className="flex flex-row items-center mb-10">
-        <h2 className="text-5xl font-semibold font-avenir text-heading ">
-          Process tagline
+        <h2 className="text-5xl font-semibold font-avenir text-heading text-center">
+          {title}
         </h2>
       </div>
       <div className="flex-col items-center w-full lg:flex lg:flex-row ">
