@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-function UnderTheFold({ title, description, data, rol }) {
+function UnderTheFold({ title, description, data }) {
   const control = useAnimation();
   const [ref, inView] = useInView();
 

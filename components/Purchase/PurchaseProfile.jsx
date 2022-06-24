@@ -1,5 +1,4 @@
 import { motion, useAnimation } from 'framer-motion';
-import toast, { Toaster } from 'react-hot-toast';
 
 import Image from 'next/image';
 import { useEffect } from 'react';
@@ -29,7 +28,6 @@ function PurchaseProfile() {
       initial="hidden"
       animate={control}
     >
-      <Toaster position="top-center" reverseOrder={false} />
       <div className="container px-6 py-16 mx-auto">
         <h2 className="mx-4 mb-5 text-2xl font-semibold uppercase text-heading font-avenir dark:text-white lg:text-3xl text-center">
           Stay informed
