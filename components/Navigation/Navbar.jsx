@@ -27,7 +27,13 @@ function Navbar() {
               href="#"
               onClick={() => router.push('/')}
             >
-              <Image src={lofty} width={50} height={50} alt="lofty" />
+              <Image
+                src={lofty}
+                width={50}
+                height={50}
+                alt="lofty"
+                loading="lazy"
+              />
             </a>
           </div>
 
@@ -69,7 +75,7 @@ function Navbar() {
 
               <select
                 onChange={changeLanguage}
-                className="block mx-0 my-2 text-gray-700 bg-white border border-none rounded-md md:mx-2 md:my-0 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                className="block mx-0 my-2 py-2 text-gray-700 bg-white border border-none rounded-md md:mx-2 md:my-0 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
               >
                 <option value="en">EN</option>
                 <option value="es">ES</option>

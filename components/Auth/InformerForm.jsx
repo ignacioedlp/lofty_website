@@ -172,6 +172,7 @@ function InformerForm() {
               className="w-full h-full lg:max-w-2xl"
               src={heroPage}
               alt=""
+              loading="lazy"
             />
           </div>
         </div>

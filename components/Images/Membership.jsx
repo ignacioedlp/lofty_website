@@ -42,8 +42,6 @@ function Membership() {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 
@@ -134,6 +132,7 @@ function Membership() {
                     width={200}
                     height={300}
                     className="rounded-lg"
+                    loading="lazy"
                   />
                 </div>
               ))}

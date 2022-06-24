@@ -30,6 +30,7 @@ function AboutAs() {
                   src="https://dummyimage.com/107x107"
                   height={107}
                   width={107}
+                  loading="lazy"
                   className=" rounded-full flex-shrink-0 object-cover object-center"
                 />
                 <span className="flex-grow flex flex-col pl-4">
@@ -63,6 +64,7 @@ function AboutAs() {
                   src="https://dummyimage.com/107x107"
                   height={107}
                   width={107}
+                  loading="lazy"
                   className=" rounded-full flex-shrink-0 object-cover object-center"
                 />
                 <span className="flex-grow flex flex-col pl-4">
@@ -96,6 +98,7 @@ function AboutAs() {
                   src="https://dummyimage.com/107x107"
                   height={107}
                   width={107}
+                  loading="lazy"
                   className=" rounded-full flex-shrink-0 object-cover object-center"
                 />
                 <span className="flex-grow flex flex-col pl-4">

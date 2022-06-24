@@ -40,8 +40,6 @@ function ImagesGallery() {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 
@@ -73,6 +71,7 @@ function ImagesGallery() {
           src={images[currentIndex].image}
           alt="carousel"
           height={400}
+          loading="lazy"
           width={700}
         />
       </div>

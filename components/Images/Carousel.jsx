@@ -128,6 +128,7 @@ function Carousel({ title }) {
                       width={300}
                       height={300}
                       className="rounded-lg"
+                      loading="lazy"
                     />
                   </div>
                 ))}

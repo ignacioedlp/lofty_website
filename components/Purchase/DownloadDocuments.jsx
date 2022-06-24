@@ -9,8 +9,6 @@ function DownloadDocuments() {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 

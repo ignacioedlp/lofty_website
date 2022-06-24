@@ -11,8 +11,6 @@ function PurchaseProfile() {
   useEffect(() => {
     if (inView) {
       control.start('visible');
-    } else {
-      control.start('hidden');
     }
   }, [control, inView]);
 
@@ -44,6 +42,7 @@ function PurchaseProfile() {
               alt=""
               height="400"
               width="600"
+              loading="lazy"
             />
           </div>
           <div className="w-full lg:w-1/3">
