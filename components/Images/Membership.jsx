@@ -79,11 +79,73 @@ function Membership() {
           </div>
         </div>
         <div className="flex-row justify-center w-full lg:w-1/2 ">
-          <div style={{ padding: `0 ${chevronWidth}px` }}>
+          <div
+            style={{ padding: `0 ${chevronWidth}px` }}
+            className="hidden md:block"
+          >
             <ItemsCarousel
               requestToChangeActive={setActiveItemIndex}
               activeItemIndex={activeItemIndex}
               numberOfCards={3}
+              gutter={20}
+              rightChevron={
+                <button className="p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-icon"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              }
+              leftChevron={
+                <button className="p-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 text-icon"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                </button>
+              }
+              outsideChevron
+              chevronWidth={chevronWidth}
+            >
+              {images.map((image, index) => (
+                <div key={index} className="">
+                  <Image
+                    src={image.image}
+                    alt={image.title}
+                    width={200}
+                    height={300}
+                    className="rounded-lg"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </ItemsCarousel>
+          </div>
+          <div style={{ padding: `0 ${chevronWidth}px` }} className="md:hidden">
+            <ItemsCarousel
+              requestToChangeActive={setActiveItemIndex}
+              activeItemIndex={activeItemIndex}
+              numberOfCards={2}
               gutter={20}
               rightChevron={
                 <button className="p-1">
