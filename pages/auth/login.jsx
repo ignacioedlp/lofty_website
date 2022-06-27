@@ -1,6 +1,6 @@
 import { motion, useAnimation } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
-
+import { GrGoogle } from 'react-icons/Gr';
 import Cookie from 'js-cookie';
 import { FirebaseError } from '@firebase/util';
 import { Formik } from 'formik';
@@ -11,16 +11,22 @@ import {
   doSignInWithGoogle,
 } from '../../lib/firebase/firebaseAuth';
 import { loginFB } from '../../lib/context/slices/sessionSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { useRouter } from 'next/router';
+import SpinnerLoading from '../../components/SpinnerLoading';
+import {
+  changeIsLoading,
+  changeNotLoading,
+} from '../../lib/context/slices/loadingSlice';
 
 function Login() {
   const dispatch = useDispatch();
   const router = useRouter();
   const control = useAnimation();
   const [ref, inView] = useInView();
+  const isLoading = useSelector((state) => state.loading.isLoading);
 
   useEffect(() => {
     if (inView) {
@@ -29,14 +35,13 @@ function Login() {
   }, [control, inView]);
 
   const performEmailSignIn = async (email, password) => {
+    dispatch(changeIsLoading());
     try {
       const userCredential = await doSignInWithEmailAndPassword(
         email,
         password
       );
-
       Cookie.set('session', userCredential.user.accessToken);
-
       dispatch(
         loginFB({
           token: userCredential.user.accessToken,
@@ -63,6 +68,7 @@ function Login() {
         }
       }
     }
+    dispatch(changeNotLoading());
   };
 
   const handleSignIn = async ({ email, password }) => {
@@ -74,13 +80,11 @@ function Login() {
   };
 
   const handleSubmitWithGoogle = async (e) => {
+    dispatch(changeIsLoading());
     e.preventDefault();
-
     try {
       const userCredential = await doSignInWithGoogle();
-
       Cookie.set('session', userCredential.user.accessToken);
-
       dispatch(
         loginFB({
           token: userCredential.user.accessToken,
@@ -107,6 +111,7 @@ function Login() {
         }
       }
     }
+    dispatch(changeNotLoading());
   };
 
   return (
@@ -142,77 +147,88 @@ function Login() {
             </div>
             <div className="w-full lg:w-1/2">
               <div className="lg:max-w-lg ">
-                <h1 className="mx-4 mb-5 text-2xl font-semibold uppercase text-heading font-avenir dark:text-white lg:text-3xl ">
-                  Login
-                </h1>
-                <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-                  <Formik
-                    onSubmit={(values) => handleSignIn(values)}
-                    initialValues={{
-                      email: '',
-                      password: '',
-                    }}
-                  >
-                    {({ handleSubmit, values, handleChange, handleBlur }) => (
-                      <form onSubmit={handleSubmit}>
-                        <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-                          <div>
-                            <label
-                              className="text-body1 font-avenir dark:text-gray-200"
-                              htmlFor="email"
-                            >
-                              Email
-                            </label>
-                            <input
-                              id="email"
-                              type="email"
-                              placeholder={'email@gmail.com'}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md border-body1 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                            />
-                          </div>
-                          <div>
-                            <label
-                              className="text-body1 font-avenir dark:text-gray-200"
-                              htmlFor="password"
-                            >
-                              Password
-                            </label>
-                            <input
-                              id="password"
-                              type="password"
-                              placeholder={'password'}
-                              value={values.password}
-                              onChange={handleChange}
-                              onBlur={handleBlur}
-                              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md border-body1 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
-                            />
-                          </div>
-                        </div>
+                {isLoading ? (
+                  <SpinnerLoading />
+                ) : (
+                  <>
+                    <h1 className="mx-4 mb-5 text-2xl font-semibold uppercase text-heading font-avenir dark:text-white lg:text-3xl ">
+                      Login
+                    </h1>
+                    <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+                      <Formik
+                        onSubmit={(values) => handleSignIn(values)}
+                        initialValues={{
+                          email: '',
+                          password: '',
+                        }}
+                      >
+                        {({
+                          handleSubmit,
+                          values,
+                          handleChange,
+                          handleBlur,
+                        }) => (
+                          <form onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                              <div>
+                                <label
+                                  className="text-body1 font-avenir dark:text-gray-200"
+                                  htmlFor="email"
+                                >
+                                  Email
+                                </label>
+                                <input
+                                  id="email"
+                                  type="email"
+                                  placeholder={'email@gmail.com'}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md border-body1 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                />
+                              </div>
+                              <div>
+                                <label
+                                  className="text-body1 font-avenir dark:text-gray-200"
+                                  htmlFor="password"
+                                >
+                                  Password
+                                </label>
+                                <input
+                                  id="password"
+                                  type="password"
+                                  placeholder={'password'}
+                                  value={values.password}
+                                  onChange={handleChange}
+                                  onBlur={handleBlur}
+                                  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-md border-body1 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                />
+                              </div>
+                            </div>
 
-                        <div className="flex flex-row mt-6">
-                          <div className="mx-1 ">
-                            <button
-                              onClick={handleSubmitWithGoogle}
-                              className="px-6 py-2 leading-5 transition-colors duration-200 transform rounded-md text-background bg-icon hover:bg-heading/80 focus:outline-none font-avenir focus:bg-gray-600 "
-                            >
-                              Sign in with Google
-                            </button>
-                          </div>
-                          <div className="mx-1 ">
-                            <button
-                              onClick={handleSubmit}
-                              className="px-6 py-2 leading-5 transition-colors duration-200 transform rounded-md text-background bg-icon hover:bg-heading/80 focus:outline-none font-avenir focus:bg-gray-600 "
-                            >
-                              Sign in
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    )}
-                  </Formik>
-                </section>
+                            <div className="flex flex-row mt-6">
+                              <div className="mx-1 ">
+                                <button
+                                  onClick={handleSubmit}
+                                  className="px-6 py-2 leading-5 transition-colors duration-200 transform rounded-md text-background bg-icon hover:bg-heading/80 focus:outline-none font-avenir focus:bg-gray-600 "
+                                >
+                                  Sign in
+                                </button>
+                              </div>
+                            </div>
+                          </form>
+                        )}
+                      </Formik>
+                      <div className="mx-1 my-1 ">
+                        <button
+                          onClick={handleSubmitWithGoogle}
+                          className="px-2 py-2 leading-5 transition-colors duration-200 transform rounded-md text-background bg-icon hover:bg-heading/80 focus:outline-none font-avenir focus:bg-gray-600 "
+                        >
+                          <GrGoogle />
+                        </button>
+                      </div>
+                    </section>
+                  </>
+                )}
               </div>
             </div>
           </div>

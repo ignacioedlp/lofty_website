@@ -63,7 +63,7 @@ function Carousel({ title }) {
         </h2>
       </div>
       <div className="flex-col items-center w-full lg:flex lg:flex-row ">
-        <div className="flex-row justify-center w-full ">
+        <div className="flex-row justify-center w-full  px-1 md:px-2 ">
           <motion.div
             ref={ref}
             variants={{
@@ -73,6 +73,7 @@ function Carousel({ title }) {
             }}
             initial="hidden"
             animate="visible"
+            className="hidden md:block "
             style={{ padding: `0 ${chevronWidth}px` }}
           >
             {imagesData.length > 0 && (
@@ -126,6 +127,78 @@ function Carousel({ title }) {
                       src={image.image}
                       alt={image.title}
                       width={300}
+                      height={300}
+                      className="rounded-lg"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </ItemsCarousel>
+            )}
+          </motion.div>
+          <motion.div
+            ref={ref}
+            variants={{
+              visible: { opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0 },
+              transition: { duration: 0.5 },
+            }}
+            initial="hidden"
+            animate="visible"
+            className="md:hidden"
+            style={{ padding: `0 ${chevronWidth}px` }}
+          >
+            {imagesData.length > 0 && (
+              <ItemsCarousel
+                requestToChangeActive={setActiveItemIndex}
+                activeItemIndex={activeItemIndex}
+                numberOfCards={2}
+                gutter={20}
+                rightChevron={
+                  <button className="p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+                }
+                leftChevron={
+                  <button className="p-1">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-icon"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  </button>
+                }
+                outsideChevron
+                chevronWidth={chevronWidth}
+              >
+                {imagesData.map((image, index) => (
+                  <div key={index} className="">
+                    <Image
+                      src={image.image}
+                      alt={image.title}
+                      width={200}
                       height={300}
                       className="rounded-lg"
                       loading="lazy"
