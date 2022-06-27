@@ -1,6 +1,6 @@
 import { motion, useAnimation } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
-import { GrGoogle, GrFlows } from 'react-icons/Gr';
+import { GrGoogle } from '@react-icons/all-files/gr/GrGoogle';
 import Cookie from 'js-cookie';
 import { FirebaseError } from '@firebase/util';
 import { Formik } from 'formik';
