@@ -21,7 +21,7 @@ function Navbar() {
     <nav className="">
       <div className="container px-6 py-3 mx-auto lg:flex lg:justify-between lg:items-center text-heading font-avenir ">
         <div className="flex items-center justify-between">
-          <div>
+          <div className="flex-col align-middle">
             <a
               className="text-2xl font-bold text-gray-800 dark:text-white lg:text-3xl hover:text-gray-700 dark:hover:text-gray-300"
               href="#"
@@ -83,7 +83,7 @@ function Navbar() {
               </select>
 
               {!isLogged ? (
-                <div className="flex flex-col lg:flex-row">
+                <div className="flex flex-col lg:flex-row md:items-center">
                   <div className="mx-0 my-1 lg:mx-2 lg:my-0">
                     <a
                       className="block w-1/2 px-2 py-2 text-sm font-medium leading-5 text-center transition-colors duration-200 transform rounded-md lg:-my-2 lg:mx-1 font-avenir text-background bg-heading hover:bg-heading/75 md:mx-0 md:w-auto"
@@ -93,7 +93,7 @@ function Navbar() {
                       Join free
                     </a>
                   </div>
-                  <div className="mx-0 my-1 lg:mx-1 lg:my-0">
+                  <div className="mx-0 my-1 lg:mx-1 lg:my-0 ">
                     <a
                       className="block w-1/2 px-3 py-2 text-sm font-medium leading-5 text-center transition-colors duration-200 transform rounded-md lg:-my-2 lg:mx-1 font-avenir text-background bg-heading hover:bg-heading/75 md:mx-0 md:w-auto"
                       href="#"

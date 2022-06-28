@@ -7,34 +7,7 @@ import UploadDocuments from '../../components/Purchase/UploadDocuments';
 import DownloadDocuments from '../../components/Purchase/DownloadDocuments';
 import PurchaseProfile from '../../components/Purchase/PurchaseProfile';
 
-const data = [
-  {
-    title: 'First name Last name',
-    rol: 'Rol',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80',
-  },
-  {
-    title: 'Restaurants',
-    rol: 'Rol',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-  },
-  {
-    title: 'Units',
-    rol: 'Rol',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80',
-  },
-];
-
-function Purchase() {
+function Purchase({ data }) {
   return (
     <div className="divide-y-2 divide-line/75 ">
       <Head>
@@ -70,6 +43,33 @@ export async function getServerSideProps({ req, res }) {
   }
 
   return {
-    props: {},
+    props: {
+      data: [
+        {
+          title: 'First name Last name',
+          rol: 'Rol',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1234&q=80',
+        },
+        {
+          title: 'Restaurants',
+          rol: 'Rol',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        },
+        {
+          title: 'Units',
+          rol: 'Rol',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=761&q=80',
+        },
+      ],
+    },
   };
 }
