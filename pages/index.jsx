@@ -5,31 +5,7 @@ import Navbar from '../components/Navigation/Navbar';
 import TopBanner from '../components/Images/TopBanner';
 import UnderTheFold from '../components/Images/UnderTheFold';
 
-const data = [
-  {
-    title: 'Workspaces',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1494173853739-c21f58b16055?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHdvcmtzcGFjZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    title: 'Restaurants',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1565895405127-481853366cf8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGluaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-  },
-  {
-    title: 'Units',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
-    image:
-      'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1aWxkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-  },
-];
-
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className="">
       <Head>
@@ -53,4 +29,36 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  //Quiero obtener el token de las cookies para saber si tengo permiso o redirijo a login
+
+  return {
+    props: {
+      data: [
+        {
+          title: 'Workspaces',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1494173853739-c21f58b16055?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHdvcmtzcGFjZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+        },
+        {
+          title: 'Restaurants',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1565895405127-481853366cf8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZGluaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        },
+        {
+          title: 'Units',
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis error officia earum dolor voluptatum delectus corporis, recusandae!',
+          image:
+            'https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1aWxkaW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+        },
+      ],
+    },
+  };
 }

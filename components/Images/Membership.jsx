@@ -128,7 +128,10 @@ function Membership() {
               chevronWidth={chevronWidth}
             >
               {images.map((image, index) => (
-                <div key={index} className="">
+                <div
+                  key={index}
+                  className="transform transition duration-500 hover:scale-90"
+                >
                   <Image
                     src={image.image}
                     alt={image.title}
