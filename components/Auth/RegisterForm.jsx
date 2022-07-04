@@ -1,6 +1,7 @@
 import {
   doCreateUserWithEmailAndPassword,
   doSendEmailVerification,
+  doUpdateProfile,
 } from '../../lib/firebase/firebaseAuth';
 import { motion, useAnimation } from 'framer-motion';
 import toast, { Toaster } from 'react-hot-toast';
@@ -29,14 +30,18 @@ function RegisterForm() {
     }
   }, [control, inView]);
 
-  const performEmailSignUp = async (email, password) => {
+  const performEmailSignUp = async (email, password, firstName, lastname) => {
     try {
       const userCredential = await doCreateUserWithEmailAndPassword(
         email,
         password
       );
+    
       toast.success('Register Success');
       await doSendEmailVerification(userCredential.user);
+      await doUpdateProfile(userCredential.user, {
+        displayName: firstName + ' ' + lastname,
+      });
       router.push('/auth/login');
     } catch (e) {
       if (e instanceof FirebaseError) {
@@ -66,7 +71,7 @@ function RegisterForm() {
     ) {
       dispatch(changeIsLoading());
       if (passwordConfirm === password) {
-        await performEmailSignUp(email, password);
+        await performEmailSignUp(email, password, firstName, lastName);
       } else {
         toast.error('Password not match');
       }
